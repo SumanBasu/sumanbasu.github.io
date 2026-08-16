@@ -94,14 +94,16 @@ a {
   transition: opacity 0.5s ease;
 }
 
-.gate:has(.gate__panel--dark:hover):not(.is-locked),
-.gate:has(.gate__controls--dark:hover):not(.is-locked) {
-  grid-template-columns: 1.22fr 0.78fr;
-}
+@media (hover: hover) and (pointer: fine) {
+  .gate:has(.gate__panel--dark:hover):not(.is-locked),
+  .gate:has(.gate__controls--dark:hover):not(.is-locked) {
+    grid-template-columns: 1.22fr 0.78fr;
+  }
 
-.gate:has(.gate__panel--light:hover):not(.is-locked),
-.gate:has(.gate__controls--light:hover):not(.is-locked) {
-  grid-template-columns: 0.78fr 1.22fr;
+  .gate:has(.gate__panel--light:hover):not(.is-locked),
+  .gate:has(.gate__controls--light:hover):not(.is-locked) {
+    grid-template-columns: 0.78fr 1.22fr;
+  }
 }
 
 .gate__panel {
@@ -630,18 +632,6 @@ a {
     grid-template-rows: 1fr 1fr;
   }
 
-  .gate:has(.gate__panel--dark:hover):not(.is-locked),
-  .gate:has(.gate__controls--dark:hover):not(.is-locked) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1.22fr 0.78fr;
-  }
-
-  .gate:has(.gate__panel--light:hover):not(.is-locked),
-  .gate:has(.gate__controls--light:hover):not(.is-locked) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.78fr 1.22fr;
-  }
-
   .gate.is-choosing-dark,
   .gate.is-choosing-light {
     grid-template-columns: 1fr;
@@ -683,9 +673,18 @@ a {
   }
 
   .gate__question {
-    top: 50%;
-    width: min(88vw, 14ch);
-    font-size: clamp(1.85rem, 9.5vw, 2.8rem);
+    top: auto;
+    bottom: 52%;
+    width: min(88vw, 16ch);
+    transform: translateX(-50%);
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+    mix-blend-mode: normal;
+    color: #f4f1ea;
+    text-wrap: balance;
+  }
+
+  .gate.is-locked .gate__question {
+    transform: translateX(-50%) translateY(-12px);
   }
 }
 
