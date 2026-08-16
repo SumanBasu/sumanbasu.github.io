@@ -59,9 +59,16 @@
         </button>
       </div>
 
-      <h1 id="gate-question" class="gate__question">
-        Looks like you have stumbled upon a decision?
-      </h1>
+      <div class="gate__copy">
+        <p class="gate__brand">Suman Basu</p>
+        <h1 id="gate-question" class="gate__question">
+          Looks like you have stumbled upon a decision?
+        </h1>
+        <p class="gate__hint">
+          A personal site. Light or dark is only how you enter. Inside: a person,
+          some work, and a way to write.
+        </p>
+      </div>
     </div>
 
     <div id="site" class="site" hidden>
@@ -74,6 +81,7 @@
           <a href="#craft">Craft</a>
           <a href="#timeline">Timeline</a>
           <a href="#contact">Contact</a>
+          <a href="#chill">Chill</a>
         </nav>
         <div class="nav__actions">
           <button class="theme-toggle" type="button" aria-label="Switch theme">
@@ -194,7 +202,7 @@
           </div>
         </section>
 
-        <section id="contact" class="section section--last">
+        <section id="contact" class="section">
           <div class="section__index" aria-hidden="true">04</div>
           <div class="section__body">
             <h2>If you would like to talk</h2>
@@ -215,6 +223,36 @@
             </div>
           </div>
         </section>
+
+        <section id="chill" class="section section--last">
+          <div class="section__index" aria-hidden="true">05</div>
+          <div class="section__body">
+            <h2>Chill</h2>
+            <p class="section__lead">
+              The interview can wait. A small game, if your shoulders have gone up.
+            </p>
+            <div class="chill-picks">
+              <button type="button" class="chill-pick" data-game="dxball">
+                <h3>DX-Ball</h3>
+                <p>A paddle, a ball, some bricks. Mouse or a finger. Do not think about sprints.</p>
+              </button>
+              <button type="button" class="chill-pick" data-game="mines">
+                <h3>Minesweeper</h3>
+                <p>Nine by nine. Right-click or a long press to flag. Logic, with a little luck.</p>
+              </button>
+            </div>
+            <div class="chill-stage" hidden>
+              <div class="chill-bar">
+                <p class="chill-status" aria-live="polite"></p>
+                <div class="chill-bar__actions">
+                  <button type="button" class="chill-reset">Again</button>
+                  <button type="button" class="chill-close">Put it away</button>
+                </div>
+              </div>
+              <div class="chill-board"></div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer class="footer">
@@ -223,5 +261,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="games.js"></script>
   </body>
 </html>
