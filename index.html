@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Suman Basu - software test engineer in Kolkata. Automation, a little theatre, and the habit of asking better questions."
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Suman Basu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <noscript>
+      <style>
+        body.gate-open {
+          overflow: auto;
+          height: auto;
+        }
+        .gate {
+          display: none !important;
+        }
+        .site[hidden] {
+          display: block !important;
+        }
+        :root {
+          --bg: #f4f1ea;
+          --bg-elevated: #fffdf8;
+          --text: #14110e;
+          --muted: #5c574f;
+          --line: #ddd6c8;
+          --accent: #9a3b24;
+          --shadow: rgba(20, 17, 14, 0.08);
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="gate-open">
+    <div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-question">
+      <div class="gate__panel gate__panel--dark"></div>
+      <div class="gate__panel gate__panel--light"></div>
+
+      <div class="gate__controls gate__controls--dark">
+        <p class="gate__aside">The night keeps its own counsel.</p>
+        <button class="gate__choice" type="button" data-theme="dark">
+          I am the one who stands with dark
+        </button>
+      </div>
+      <div class="gate__controls gate__controls--light">
+        <p class="gate__aside">Morning is a kind of courage.</p>
+        <button class="gate__choice" type="button" data-theme="light">
+          I prefer the side of light
+        </button>
+      </div>
+
+      <h1 id="gate-question" class="gate__question">
+        Looks like you have stumbled upon a decision?
+      </h1>
+    </div>
+
+    <div id="site" class="site" hidden>
+      <a class="skip-link" href="#intro">Skip to content</a>
+
+      <header class="nav">
+        <a class="nav__mark" href="#intro" aria-label="Suman Basu, home">SB</a>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#craft">Craft</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav__actions">
+          <button class="theme-toggle" type="button" aria-label="Switch theme">
+            <span class="theme-toggle__on-light">Go dark</span>
+            <span class="theme-toggle__on-dark">Go light</span>
+          </button>
+          <button class="redecide" type="button">Choose again</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="intro" class="intro">
+          <p class="intro__eyebrow">Software Test Engineer · still a person</p>
+          <h1 class="intro__name">Suman Basu</h1>
+          <p class="intro__lede">
+            I ask software the questions it hoped nobody would. Five years of test
+            automation - healthcare, insurance, the quiet work of making sure the
+            important stuff actually works. You already made a choice to get here.
+            That is a good start.
+          </p>
+        </section>
+
+        <section id="about" class="section">
+          <div class="section__index" aria-hidden="true">01</div>
+          <div class="section__body">
+            <h2>The person in the room</h2>
+            <p>
+              Charm, to me, is not a costume. It is paying attention - to a sentence,
+              a screen, a case that only fails on Thursdays. I work from Kolkata, on
+              systems people actually depend on. I like jokes that arrive a half-beat
+              late, and failures that arrive for a reason.
+            </p>
+            <p>
+              One side of me wants to take a product apart until the mechanism is
+              obvious. The other wants to leave a little mystery in the room. If you
+              picked light or dark at the door, you already met that split.
+            </p>
+          </div>
+        </section>
+
+        <section id="craft" class="section">
+          <div class="section__index" aria-hidden="true">02</div>
+          <div class="section__body">
+            <h2>What I bring</h2>
+            <p class="section__lead">
+              Habits that travel. They work on software. They also work on rooms full of people.
+            </p>
+            <ul class="talents">
+              <li>
+                <h3>Social engineering</h3>
+                <p>
+                  The legal kind. Reading a room, finding the real objection, getting a sceptical
+                  person to move without making a scene. People are a system. I pay attention
+                  to that one too - which is most of management, whether or not anyone
+                  prints the title yet.
+                </p>
+              </li>
+              <li>
+                <h3>Taste</h3>
+                <p>
+                  Type, colour, silence. I care how a thing feels before it explains itself -
+                  a product, a deck, a sentence. I will argue for one good typeface over five
+                  mediocre ones, and for a release that does not look like it was in a hurry.
+                </p>
+              </li>
+              <li>
+                <h3>Quality, as a people problem</h3>
+                <p>
+                  Tests matter. Mentoring matters more. I would rather teach a team to catch
+                  the crack than be the only person who can. The work is half automation,
+                  half getting a date to become honest.
+                </p>
+              </li>
+              <li>
+                <h3>A voice</h3>
+                <p>
+                  Words with a temperature. I would rather a site - or a report, or a standup -
+                  sound like someone than like a template that escaped a conference booth.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="timeline" class="section">
+          <div class="section__index" aria-hidden="true">03</div>
+          <div class="section__body">
+            <h2>Timeline</h2>
+            <p class="section__lead">
+              A few rooms I have already been in. In order, more or less.
+            </p>
+            <ol class="timeline">
+              <li>
+                <span class="timeline__year">2017</span>
+                <span class="timeline__marker" aria-hidden="true"></span>
+                <h3>JPBS, Kolkata</h3>
+                <p>The first diploma. Boards, then a little air. The syllabus stopped being the whole world.</p>
+              </li>
+              <li>
+                <span class="timeline__year">2017–21</span>
+                <span class="timeline__marker" aria-hidden="true"></span>
+                <h3>IEM, Kolkata</h3>
+                <p>B.Tech in Electronics and Communication. I studied signals. I ended up testing systems.</p>
+              </li>
+              <li>
+                <span class="timeline__year">2021</span>
+                <span class="timeline__marker" aria-hidden="true"></span>
+                <h3>Cognizant</h3>
+                <p>Insurance platforms. Selenium, long regressions, data that had to be true.</p>
+              </li>
+              <li>
+                <span class="timeline__year">Now</span>
+                <span class="timeline__marker" aria-hidden="true"></span>
+                <h3>Cozeva</h3>
+                <p>Healthcare. Automation, mentoring, and keeping quality in the release, not after it.</p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="contact" class="section section--last">
+          <div class="section__index" aria-hidden="true">04</div>
+          <div class="section__body">
+            <h2>If you would like to talk</h2>
+            <p>
+              A role, a bug, a half-formed idea - I answer to all three. Email is the
+              civilised door. LinkedIn if you prefer the slightly less civilised one.
+            </p>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:sumanbasu162@gmail.com">sumanbasu162@gmail.com</a>
+              <a class="contact-link" href="https://linkedin.com/in/sumanbasu162">linkedin.com/in/sumanbasu162</a>
+              <a class="contact-link" href="https://github.com/SumanBasu">github.com/SumanBasu</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Suman Basu · Kolkata · Still choosing, on purpose</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
