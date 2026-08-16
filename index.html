@@ -43,31 +43,35 @@
   </head>
   <body class="gate-open">
     <div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-question">
-      <div class="gate__panel gate__panel--dark"></div>
-      <div class="gate__panel gate__panel--light"></div>
-
-      <div class="gate__controls gate__controls--dark">
-        <p class="gate__aside">The night keeps its own counsel.</p>
-        <button class="gate__choice" type="button" data-theme="dark">
-          I am the one who stands with dark
-        </button>
+      <div class="gate__panel gate__panel--dark">
+        <div class="gate__intro">
+          <p class="gate__name-full">Suman Basu</p>
+          <p class="gate__given" aria-hidden="true">Suman</p>
+          <h1 id="gate-question" class="gate__question">
+            Looks like you have stumbled upon a decision?
+          </h1>
+        </div>
+        <div class="gate__controls gate__controls--dark">
+          <p class="gate__aside">The night keeps its own counsel.</p>
+          <button class="gate__choice" type="button" data-theme="dark">
+            I am the one who stands with dark
+          </button>
+        </div>
       </div>
-      <div class="gate__controls gate__controls--light">
-        <p class="gate__aside">Morning is a kind of courage.</p>
-        <button class="gate__choice" type="button" data-theme="light">
-          I prefer the side of light
-        </button>
-      </div>
-
-      <div class="gate__copy">
-        <p class="gate__brand">Suman Basu</p>
-        <h1 id="gate-question" class="gate__question">
-          Looks like you have stumbled upon a decision?
-        </h1>
-        <p class="gate__hint">
-          A personal site. Light or dark is only how you enter. Inside: a person,
-          some work, and a way to write.
-        </p>
+      <div class="gate__panel gate__panel--light">
+        <div class="gate__intro">
+          <p class="gate__family" aria-hidden="true">Basu</p>
+          <p class="gate__hint">
+            A personal site. Light or dark is only how you enter. Inside: a person,
+            some work, and a way to write.
+          </p>
+        </div>
+        <div class="gate__controls gate__controls--light">
+          <p class="gate__aside">Morning is a kind of courage.</p>
+          <button class="gate__choice" type="button" data-theme="light">
+            I prefer the side of light
+          </button>
+        </div>
       </div>
     </div>
 
