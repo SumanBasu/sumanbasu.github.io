@@ -2,10 +2,17 @@ const chillPicks = document.querySelectorAll(".chill-pick");
 const chillStage = document.querySelector(".chill-stage");
 const chillBoard = document.querySelector(".chill-board");
 const chillStatus = document.querySelector(".chill-status");
+const chillPlay = document.querySelector(".chill-play");
 const chillReset = document.querySelector(".chill-reset");
 const chillClose = document.querySelector(".chill-close");
 
+const GAME_LABELS = {
+  dxball: "DX-Ball",
+  mines: "Minesweeper",
+};
+
 let activeGame = null;
+let playing = false;
 let stopActive = () => {};
 
 function colors() {
@@ -24,37 +31,64 @@ function setStatus(text) {
   if (chillStatus) chillStatus.textContent = text;
 }
 
+function showLobby() {
+  stopActive();
+  playing = false;
+  chillBoard.replaceChildren();
+  const lobby = document.createElement("div");
+  lobby.className = "chill-lobby";
+  const title = GAME_LABELS[activeGame] || "A game";
+  lobby.innerHTML = `<p>${title} is ready. Tap play when you are.</p>`;
+  chillBoard.appendChild(lobby);
+  setStatus("Waiting for you.");
+  chillPlay.hidden = false;
+  chillReset.hidden = true;
+}
+
+function playGame() {
+  if (!activeGame) return;
+  stopActive();
+  playing = true;
+  chillBoard.replaceChildren();
+  if (activeGame === "dxball") stopActive = startDxBall(chillBoard);
+  if (activeGame === "mines") stopActive = startMines(chillBoard);
+  chillPlay.hidden = true;
+  chillReset.hidden = false;
+  window.requestAnimationFrame(() => {
+    chillStage.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
+
 function openStage(game) {
   stopActive();
   activeGame = game;
   chillStage.hidden = false;
-  chillBoard.replaceChildren();
-  chillStage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  showLobby();
+  window.requestAnimationFrame(() => {
+    chillStage.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
 }
 
 function closeStage() {
   stopActive();
   activeGame = null;
+  playing = false;
   chillStage.hidden = true;
   chillBoard.replaceChildren();
   setStatus("");
+  chillPlay.hidden = false;
+  chillReset.hidden = true;
 }
 
 chillPicks.forEach((button) => {
-  button.addEventListener("click", () => {
-    const game = button.dataset.game;
-    openStage(game);
-    if (game === "dxball") stopActive = startDxBall(chillBoard);
-    if (game === "mines") stopActive = startMines(chillBoard);
-  });
+  button.addEventListener("click", () => openStage(button.dataset.game));
 });
+
+chillPlay?.addEventListener("click", playGame);
 
 chillReset?.addEventListener("click", () => {
   if (!activeGame) return;
-  stopActive();
-  chillBoard.replaceChildren();
-  if (activeGame === "dxball") stopActive = startDxBall(chillBoard);
-  if (activeGame === "mines") stopActive = startMines(chillBoard);
+  playGame();
 });
 
 chillClose?.addEventListener("click", closeStage);

@@ -1,7 +1,6 @@
 const gate = document.getElementById("gate");
 const site = document.getElementById("site");
 const themeToggle = document.querySelector(".theme-toggle");
-const redecide = document.querySelector(".redecide");
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 const THEME_KEY = "suman-theme";
@@ -41,18 +40,6 @@ function chooseTheme(theme) {
   window.setTimeout(showSite, delay);
 }
 
-function returnToGate() {
-  gate.removeAttribute("hidden");
-  gate.removeAttribute("aria-hidden");
-  gate.inert = false;
-  gate.classList.remove("is-gone", "is-locked", "is-choosing-dark", "is-choosing-light");
-  site.hidden = true;
-  document.body.classList.add("gate-open");
-  window.scrollTo(0, 0);
-  const firstChoice = gate.querySelector(".gate__choice");
-  firstChoice?.focus();
-}
-
 gate.querySelectorAll(".gate__choice").forEach((button) => {
   button.addEventListener("click", () => chooseTheme(button.dataset.theme));
 });
@@ -62,10 +49,41 @@ themeToggle?.addEventListener("click", () => {
   applyTheme(next);
 });
 
-redecide?.addEventListener("click", returnToGate);
-
 document.addEventListener("keydown", (event) => {
   if (site.hidden === false) return;
   if (event.key === "ArrowLeft") chooseTheme("dark");
   if (event.key === "ArrowRight") chooseTheme("light");
 });
+
+const nav = document.querySelector(".nav");
+const MOBILE_NAV = window.matchMedia("(max-width: 860px)");
+let lastScrollY = 0;
+
+function setDockShown(shown) {
+  if (!nav) return;
+  if (!MOBILE_NAV.matches) {
+    nav.classList.remove("is-shown");
+    nav.removeAttribute("inert");
+    return;
+  }
+  nav.classList.toggle("is-shown", shown);
+  nav.toggleAttribute("inert", !shown);
+}
+
+function onScrollDock() {
+  if (!nav) return;
+  if (document.body.classList.contains("gate-open") || !MOBILE_NAV.matches) {
+    setDockShown(false);
+    lastScrollY = window.scrollY;
+    return;
+  }
+
+  const y = window.scrollY;
+  if (y > lastScrollY + 6) setDockShown(true);
+  if (y < lastScrollY - 6) setDockShown(false);
+  lastScrollY = y;
+}
+
+setDockShown(false);
+window.addEventListener("scroll", onScrollDock, { passive: true });
+MOBILE_NAV.addEventListener("change", onScrollDock);
