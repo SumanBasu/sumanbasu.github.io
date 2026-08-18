@@ -1,0 +1,221 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  max-width: 100%;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: Outfit, system-ui, sans-serif;
+  line-height: 1.6;
+  background: #0b0b0b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.mark {
+  position: fixed;
+  top: clamp(1.1rem, 3.5vh, 2.2rem);
+  left: clamp(1.25rem, 5vw, 3.5rem);
+  z-index: 5;
+  margin: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #14110e;
+  pointer-events: none;
+}
+
+.doors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100dvh;
+  isolation: isolate;
+  transition: grid-template-columns 0.85s cubic-bezier(0.76, 0, 0.24, 1),
+    grid-template-rows 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 720px) {
+  .doors:not(.is-leaving):has(.door--work:hover) {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .doors:not(.is-leaving):has(.door--person:hover) {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.doors.is-leaving-work {
+  grid-template-columns: 1fr 0fr;
+}
+
+.doors.is-leaving-person {
+  grid-template-columns: 0fr 1fr;
+}
+
+.door {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.9rem;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 12vh clamp(1.5rem, 6vw, 5rem);
+  text-decoration: none;
+}
+
+.door--work {
+  background: #f4f1ea;
+  color: #14110e;
+  --door-accent: #9a3b24;
+}
+
+.door--person {
+  background: #0b0b0b;
+  color: #f3eee6;
+  --door-accent: #d4a574;
+}
+
+.door > * {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.doors.is-leaving .door > * {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.door__kicker {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--door-accent);
+}
+
+.door__title {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.door__note {
+  max-width: 32ch;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  opacity: 0.72;
+  text-wrap: pretty;
+}
+
+.door__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease,
+    opacity 0.5s ease;
+}
+
+.door__cta::after {
+  content: "→";
+  transition: transform 0.25s ease;
+}
+
+.door:hover .door__cta::after,
+.door:focus-visible .door__cta::after {
+  transform: translateX(4px);
+}
+
+.door--work:hover .door__cta,
+.door--work:focus-visible .door__cta {
+  background: #14110e;
+  color: #f4f1ea;
+}
+
+.door--person:hover .door__cta,
+.door--person:focus-visible .door__cta {
+  background: #f3eee6;
+  color: #0b0b0b;
+}
+
+.door:focus-visible {
+  outline: 2px solid var(--door-accent);
+  outline-offset: -8px;
+}
+
+.door:active .door__cta {
+  transform: scale(0.98);
+}
+
+@media (max-width: 719px) {
+  .mark {
+    left: clamp(1.25rem, 7vw, 2rem);
+    top: 1.4rem;
+  }
+
+  .doors {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .doors.is-leaving-work,
+  .doors.is-leaving-person {
+    grid-template-columns: 1fr;
+  }
+
+  .doors.is-leaving-work {
+    grid-template-rows: 1fr 0fr;
+  }
+
+  .doors.is-leaving-person {
+    grid-template-rows: 0fr 1fr;
+  }
+
+  .door {
+    gap: 0.65rem;
+    padding: 3.5rem 7vw 2.75rem;
+  }
+
+  .door--work {
+    padding-top: 5.5rem;
+  }
+
+  .door__note {
+    max-width: none;
+    font-size: 0.95rem;
+  }
+
+  .door__cta {
+    margin-top: 0.35rem;
+    padding: 0.65rem 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doors,
+  .door > *,
+  .door__cta,
+  .door__cta::after {
+    transition: none;
+  }
+}

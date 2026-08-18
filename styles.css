@@ -380,6 +380,23 @@ a {
   color: var(--text);
 }
 
+.nav__cross {
+  padding: 0.42rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav__cross:hover,
+.nav__cross:focus-visible {
+  border-color: var(--accent);
+}
+
 .nav__actions {
   display: flex;
   align-items: center;
@@ -494,6 +511,17 @@ a {
 
 .section__lead {
   margin-bottom: 2rem;
+}
+
+.section p a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.section p a:hover,
+.section p a:focus-visible {
+  color: var(--accent);
 }
 
 .talents {
@@ -807,6 +835,25 @@ a {
   margin: 0;
 }
 
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.footer__links a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer__links a:hover,
+.footer__links a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 @media (max-width: 860px) {
   .talents,
   .chill-picks {
@@ -846,8 +893,13 @@ a {
 
   .nav__mark {
     flex: 0 0 auto;
-    padding: 0.35rem 0.55rem;
-    font-size: 0.92rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .nav__cross {
+    padding: 0.38rem 0.7rem;
+    font-size: 0.75rem;
   }
 
   .nav__links {
@@ -866,10 +918,14 @@ a {
 
   .nav__links a {
     flex: 0 0 auto;
-    padding: 0.45rem 0.55rem;
+    padding: 0.45rem 0.45rem;
     border-radius: 999px;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     white-space: nowrap;
+  }
+
+  .nav__actions {
+    gap: 0.35rem;
   }
 
   .theme-toggle {
